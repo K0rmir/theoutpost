@@ -1,9 +1,16 @@
-export default function JobBoard() {
+import {Link} from "react-router-dom";
+export default function JobBoard({quests}) {
+
+
 
     return (
         <>
-        <h1>Test</h1>
+        <nav>
+            {quests.map((posts) => {
+                return <Link to={`/jobboard/${posts.id}`} key={posts.id + posts.title}>{posts.title}</Link>
+            })}
+        </nav>
         
         </>
-    )
+    );
 }
