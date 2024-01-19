@@ -25,11 +25,11 @@ app.get("/quests", async (request, response) => {
     response.json(result.rows);
 });
 
-app.get("/quest/${id}", async (request, response) => {
+app.get("/quest/:id", async (request, response) => {
     const id = request.params.id
     const result = await db.query(`SELECT * FROM posts
-    WHERE id = $1", [id]`);
-    return result.rows[0];
+    WHERE id = $1`, [id]);
+    return response.json(result.rows[0]);
 })
 
 // Start the server //

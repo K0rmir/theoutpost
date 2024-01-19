@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 export default function Quests() {
 
-    const [questInfo, setQuestInfo] = useState([]);
+    const [questInfo, setQuestInfo] = useState({});
     const { id } = useParams();
    
 
@@ -12,7 +12,7 @@ export default function Quests() {
     }, []);
 
     async function handleGetQuest() {
-        const response = await fetch("http://localhost:8080/quest/${id}");
+        const response = await fetch(`http://localhost:8080/quest/${id}`);
         const data = await response.json()
 
         setQuestInfo(data);
@@ -24,10 +24,8 @@ export default function Quests() {
 
     return (
         <>
-        {questInfo.map((posts) => {
-                return <h1 key={posts.id + posts.title}>{posts.title}</h1>
-            
-})}
+         <h1 key={questInfo.id}>{questInfo.title}</h1>
+         <h3 key={questInfo.id}>{questInfo.content}</h3>
 
         
         </>
