@@ -27,9 +27,8 @@ export default function App() {
 
         <Routes>
             <Route path="/" element={""}></Route>
-            <Route path="/jobboard" element={<JobBoard quests={quests} />}>
-                <Route path=":id" element={<Quests />}> /</Route>
-            </Route>
+            <Route path="/jobboard" element={<JobBoard quests={quests} />}/>
+            <Route path="/jobboard/:id" element={<Quests />}></Route>
         </Routes>
 
         

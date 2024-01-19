@@ -27,8 +27,10 @@ app.get("/quests", async (request, response) => {
 
 app.get("/quest/:id", async (request, response) => {
     const id = request.params.id
-    const result = await db.query(`SELECT * FROM posts
-    WHERE id = $1`, [id]);
+    const result = await db.query(`SELECT * FROM users
+    JOIN posts ON users.posts_id = posts.id
+    JOIN difficulty ON posts.difficulty_id = difficulty.id
+    WHERE posts.id = $1`, [id]);
     return response.json(result.rows[0]);
 })
 

@@ -16,7 +16,10 @@ export default function Quests() {
         const data = await response.json()
 
         setQuestInfo(data);
+        console.log(questInfo);
     }
+
+    console.log(questInfo.content);
 
 
 
@@ -24,8 +27,10 @@ export default function Quests() {
 
     return (
         <>
-         <h1 key={questInfo.id}>{questInfo.title}</h1>
-         <h3 key={questInfo.id}>{questInfo.content}</h3>
+         <h1>{questInfo.title}</h1>
+         <h3>{questInfo.content}</h3>
+         <p>{questInfo.type}</p>
+         <p>{questInfo.name}</p>
 
         
         </>

@@ -7,7 +7,7 @@ export default function JobBoard({quests}) {
         <>
         <nav>
             {quests.map((posts) => {
-                return <Link to={`/jobboard/${posts.id}`} key={posts.id + posts.title}>{posts.title}</Link>
+                return <Link to={`/jobboard/${posts.posts_id}`} key={posts.title}>{posts.title}</Link>
             })}            
         </nav>
         <Outlet/>
