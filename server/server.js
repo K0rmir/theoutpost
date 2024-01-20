@@ -8,10 +8,10 @@ dotenv.config(); //This allows us to use environment variables like the DATABASE
 const PORT = 8080;
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 // Connect to Supabase database //
 const dbConnectionString = process.env.DATABASE_URL;
-console.log(dbConnectionString);
 const db = new pg.Pool({ connectionString: dbConnectionString});
 
 
@@ -33,6 +33,33 @@ app.get("/quest/:id", async (request, response) => {
     WHERE posts.id = $1`, [id]);
     return response.json(result.rows[0]);
 })
+// Function for handling data being passed to Supabase database //
+app.post("/quests", async function (request, response) {
+    const title = request.body.jobname;
+    const content = request.body.description;
+    const user = request.body.npcname;
+    const difficulty = request.body.difficulty;
+
+    let difficulty_id = 0;
+    if (difficulty === "Easy") { 
+        difficulty_id = 1
+    } else if (difficulty === "Moderate") {
+        difficulty_id = 2
+    } else if (difficulty === "Hard") {
+        difficulty_id = 3
+    } else if (difficulty === "Insane") {
+        difficulty_id = 4
+    }
+    const insertNewJob = await db.query(        
+        `INSERT INTO posts (title, content, difficulty_id) VALUES ($1, $2, $3) RETURNING id`, [title, content, difficulty_id]); 
+
+    const newJob = insertNewJob.rows[0];
+    const postsId = newJob.id;
+    
+   await db.query(
+        `INSERT INTO users (name, posts_id) VALUES ($1, $2)`, [user, postsId]);   
+    response.json("Job Created");
+});
 
 // Start the server //
 app.listen(PORT, () => console.log(`You're listening to PORT ${PORT}`));
