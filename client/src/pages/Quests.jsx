@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 export default function Quests() {
   const [questInfo, setQuestInfo] = useState({});
@@ -22,6 +22,10 @@ export default function Quests() {
       <p>{questInfo.name}</p>
       <h3>{questInfo.content}</h3>
       <p>Difficulty: {questInfo.type}</p>
+      <button>Accept</button>
+      <Link to={`/jobboard`}>
+        <button>Decline</button>
+      </Link>
     </>
   );
 }

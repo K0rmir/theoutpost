@@ -1,0 +1,55 @@
+* {
+    font-family: monospace;
+}
+
+body {
+    height: 100vh;
+    background: rgb(58,33,60);
+    background: linear-gradient(102deg, rgba(58,33,60,1) 7%, rgba(7,57,84,1) 84%, rgba(5,108,129,1) 100%);
+    background-repeat:unset;
+    background-size: auto;
+}
+
+
+#welcome {
+    margin-top: 3rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+#welcome a {
+    color: black;
+}
+
+#welcome p {
+    color: black;
+    font-size: 1.2rem;
+    font-weight:500;
+}
+
+
+
+#jobBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 25px;
+    gap: 25px;  
+    
+    
+
+}
+
+#jobBtns button {
+    height: 35px;
+    width: 115px;
+    border-radius: 10px;
+    backdrop-filter: blur(500px);
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 700;
+}

@@ -3,6 +3,8 @@ import {useState, useEffect} from "react";
 import JobBoard from "./pages/JobBoard";
 import Quests from "./pages/Quests";
 import JobForm from "./components/JobForm";
+import "./App.css";
+// import "./css/JobBoard.css";
 
 export default function App() {
   const [quests, setQuests] = useState([]);
@@ -20,15 +22,25 @@ export default function App() {
 
   return (
     <>
-      <h1>
-        Welcome to <a href="/">The Outpost</a>, chum...
-      </h1>
-      <p>
-        Need some work? Lookin' to make allies? Hit up the job board, see what's
-        posted. Hell, even post up your own job...
-      </p>
-      <Link to="/jobboard">Job Board</Link>
-      <Link to="/jobboard/jobform">Job Form</Link>
+      <div id="welcome">
+        <h1>
+          Welcome to <a href="/">The Outpost</a>, chum...
+        </h1>
+        <p>Need some work? Lookin' to make allies?</p>
+        <p>Hit up the job board, see what's posted.</p>
+        <p>Hell, even post up your own...</p>
+      </div>
+      <div id="jobBtns">
+        <Link to="/jobboard">
+          <button>Job Board</button>
+        </Link>
+        <Link to="/jobboard/jobform">
+          <button>Post A Job</button>
+        </Link>
+        <Link to="/jobboard/myjobs">
+          <button>Saved Jobs</button>
+        </Link>
+      </div>
 
       <Routes>
         <Route path="/" element={""}></Route>
