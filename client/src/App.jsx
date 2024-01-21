@@ -15,7 +15,7 @@ export default function App() {
   }, []);
   // Function to call /quests API endpoint to FETCH all of the quests
   async function handleGetQuests() {
-    const response = await fetch("http://localhost:8080/quests");
+    const response = await fetch("https://the-outpost.onrender.com/quests");
     const data = await response.json();
 
     setQuests(data);

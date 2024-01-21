@@ -16,7 +16,7 @@ export default function JobForm() {
     // API Call here to add data to database.
     const formData = new FormData(event.target);
     const formValues = Object.fromEntries(formData);
-    const response = await fetch("http://localhost:8080/quests", {
+    const response = await fetch("https://the-outpost.onrender.com/quests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

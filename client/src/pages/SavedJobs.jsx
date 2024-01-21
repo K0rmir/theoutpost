@@ -9,7 +9,7 @@ export default function SavedJobs() {
   }, []);
 
   async function handleGetSavedQuests() {
-    const response = await fetch("http://localhost:8080/myjobs");
+    const response = await fetch("https://the-outpost.onrender.com/myjobs");
     const data = await response.json();
 
     setSavedQuests(data);

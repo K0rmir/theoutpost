@@ -11,19 +11,24 @@ export default function Quests() {
   }, []);
 
   async function handleGetQuest() {
-    const response = await fetch(`http://localhost:8080/quest/${id}`);
+    const response = await fetch(
+      `https://the-outpost.onrender.com/quest/${id}`
+    );
     const data = await response.json();
 
     setQuestInfo(data);
   }
 
   async function handleAcceptQuest() {
-    const response = await fetch(`http://localhost:8080/quest/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `https://the-outpost.onrender.com/quest/${id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 
   return (
