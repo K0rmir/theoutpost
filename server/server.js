@@ -33,6 +33,13 @@ app.get("/quest/:id", async (request, response) => {
     WHERE posts.id = $1`, [id]);
     return response.json(result.rows[0]);
 })
+
+app.get("/myjobs", async (request, response) => {
+    const result = await db.query(`SELECT * FROM saved`);
+    response.json(result.rows);
+});
+
+
 // Function for handling data being passed to Supabase database from Job Form //
 app.post("/quests", async function (request, response) {
     const title = request.body.jobname;

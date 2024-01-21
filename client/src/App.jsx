@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import JobBoard from "./pages/JobBoard";
 import Quests from "./pages/Quests";
 import JobForm from "./components/JobForm";
-import SavedJobs from "./components/SavedJobs";
+import SavedJobs from "./pages/SavedJobs";
 import "./App.css";
 // import "./css/JobBoard.css";
 
@@ -50,7 +50,7 @@ export default function App() {
         <Route path="/jobboard/jobform" element={<JobForm></JobForm>}></Route>
         <Route
           path="/jobboard/myjobs"
-          element={<SavedJobs></SavedJobs>}></Route>
+          element={<SavedJobs></SavedJobs>}></Route>{" "}
       </Routes>
       <footer></footer>
     </>

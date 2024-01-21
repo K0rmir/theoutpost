@@ -18,6 +18,7 @@ export default function Quests() {
   }
 
   async function handleAcceptQuest() {
+    <Link to={`/jobboard`}></Link>;
     const response = await fetch(`http://localhost:8080/quest/${id}`, {
       method: "POST",
       headers: {
