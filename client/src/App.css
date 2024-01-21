@@ -8,16 +8,20 @@ body {
     background: linear-gradient(102deg, rgba(58,33,60,1) 7%, rgba(7,57,84,1) 84%, rgba(5,108,129,1) 100%);
     background-repeat:unset;
     background-size: auto;
+    margin: 0;
+    padding: 0;
 }
 
-
 #welcome {
-    margin-top: 3rem;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
+    background-color: #546A76 
+}
+
+#welcome h1 {
+    margin-left: 25px;
 }
 
 #welcome a {
@@ -52,4 +56,16 @@ body {
     background-color: transparent;
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+footer {   
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #546A76;  
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0; 
 }

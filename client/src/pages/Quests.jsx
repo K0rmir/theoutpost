@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
+import "../css/Quests.css";
 
 export default function Quests() {
   const [questInfo, setQuestInfo] = useState({});
@@ -16,16 +17,29 @@ export default function Quests() {
     setQuestInfo(data);
   }
 
+  async function handleAcceptQuest() {
+    const response = await fetch(`http://localhost:8080/quest/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
   return (
     <>
-      <h1>{questInfo.title}</h1>
-      <p>{questInfo.name}</p>
-      <h3>{questInfo.content}</h3>
-      <p>Difficulty: {questInfo.type}</p>
-      <button>Accept</button>
-      <Link to={`/jobboard`}>
-        <button>Decline</button>
-      </Link>
+      <div id="jobContent">
+        <h1>{questInfo.title}</h1>
+        <p>{questInfo.name}</p>
+        <h3>{questInfo.content}</h3>
+        <p>Difficulty: {questInfo.type}</p>
+      </div>
+      <div id="jobBtns">
+        <button onClick={handleAcceptQuest}>Accept</button>
+        <Link to={`/jobboard`}>
+          <button>Decline</button>
+        </Link>
+      </div>
     </>
   );
 }

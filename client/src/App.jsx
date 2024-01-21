@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import JobBoard from "./pages/JobBoard";
 import Quests from "./pages/Quests";
 import JobForm from "./components/JobForm";
+import SavedJobs from "./components/SavedJobs";
 import "./App.css";
 // import "./css/JobBoard.css";
 
@@ -22,14 +23,14 @@ export default function App() {
 
   return (
     <>
-      <div id="welcome">
+      <header id="welcome">
         <h1>
-          Welcome to <a href="/">The Outpost</a>, chum...
+          Welcome to <a href="/">The Outpost</a> chum...
         </h1>
         <p>Need some work? Lookin' to make allies?</p>
         <p>Hit up the job board, see what's posted.</p>
         <p>Hell, even post up your own...</p>
-      </div>
+      </header>
       <div id="jobBtns">
         <Link to="/jobboard">
           <button>Job Board</button>
@@ -38,7 +39,7 @@ export default function App() {
           <button>Post A Job</button>
         </Link>
         <Link to="/jobboard/myjobs">
-          <button>Saved Jobs</button>
+          <button>My Jobs</button>
         </Link>
       </div>
 
@@ -47,7 +48,11 @@ export default function App() {
         <Route path="/jobboard" element={<JobBoard quests={quests} />} />
         <Route path="/jobboard/:id" element={<Quests />}></Route>
         <Route path="/jobboard/jobform" element={<JobForm></JobForm>}></Route>
+        <Route
+          path="/jobboard/myjobs"
+          element={<SavedJobs></SavedJobs>}></Route>
       </Routes>
+      <footer></footer>
     </>
   );
 }

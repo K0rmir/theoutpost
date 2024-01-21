@@ -33,7 +33,7 @@ app.get("/quest/:id", async (request, response) => {
     WHERE posts.id = $1`, [id]);
     return response.json(result.rows[0]);
 })
-// Function for handling data being passed to Supabase database //
+// Function for handling data being passed to Supabase database from Job Form //
 app.post("/quests", async function (request, response) {
     const title = request.body.jobname;
     const content = request.body.description;
@@ -59,6 +59,23 @@ app.post("/quests", async function (request, response) {
    await db.query(
         `INSERT INTO users (name, posts_id) VALUES ($1, $2)`, [user, postsId]);   
     response.json("Job Created");
+});
+
+// Function to handle accepting a quest, removing it from the main posts table and adding it to 'Saved' //
+app.post("/quest/:id", async (request, response) => {
+    const id = request.params.id
+    const result = await db.query(`INSERT INTO saved (title, content, difficulty_id)
+    SELECT title, content, difficulty_id
+    FROM posts
+    WHERE posts.id = $1`, [id]);
+
+    await db.query(`UPDATE users 
+    SET posts_id = NULL 
+    WHERE posts_id = $1`, [id]);
+
+    await db.query(`DELETE FROM posts
+    WHERE posts.id = $1`, [id]);
+   
 });
 
 // Start the server //
