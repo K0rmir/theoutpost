@@ -18,7 +18,6 @@ export default function Quests() {
   }
 
   async function handleAcceptQuest() {
-    <Link to={`/jobboard`}></Link>;
     const response = await fetch(`http://localhost:8080/quest/${id}`, {
       method: "POST",
       headers: {
@@ -36,7 +35,13 @@ export default function Quests() {
         <p>Difficulty: {questInfo.type}</p>
       </div>
       <div id="jobBtns">
-        <button onClick={handleAcceptQuest}>Accept</button>
+        <button
+          onClick={() => {
+            handleAcceptQuest();
+            window.location.href = "/jobboard";
+          }}>
+          Accept
+        </button>
         <Link to={`/jobboard`}>
           <button>Decline</button>
         </Link>

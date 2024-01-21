@@ -11,7 +11,9 @@ export default function JobBoard({quests}) {
               <div id="jobCard">
                 <h2>{posts.title}</h2>
                 <p>{posts.name}</p>
-                <p>{posts.type}</p>
+                <p>
+                  Difficulty: <strong>{posts.type}</strong>
+                </p>
               </div>
             </Link>
           );
