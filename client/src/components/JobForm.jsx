@@ -29,7 +29,7 @@ export default function JobForm() {
       npcname: "",
       difficulty: "",
     });
-    navigate("/jobboard");
+    navigate("https://theoutpost.onrender.com/jobboard");
   }
 
   function handleChange(event) {

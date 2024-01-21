@@ -43,7 +43,7 @@ export default function Quests() {
         <button
           onClick={() => {
             handleAcceptQuest();
-            window.location.href = "/jobboard";
+            window.location.href = "https://theoutpost.onrender.com/jobboard";
           }}>
           Accept
         </button>
